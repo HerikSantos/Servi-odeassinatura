@@ -1,7 +1,7 @@
 import { ICustomerRepository } from "../../repositories/ICustomerRepository";
 import { ICreateCustomerUseCase } from "./ICreateCustomerUseCase";
-import { IEmailValidator } from "./protocols/IEmailValidator";
-import { IEncrypter } from "./protocols/IEncrypter";
+import { IEmailValidator } from "../protocols/IEmailValidator";
+import { IEncrypter } from "../protocols/IEncrypter";
 
 class CreateCustomerUseCase implements ICreateCustomerUseCase {
     constructor(

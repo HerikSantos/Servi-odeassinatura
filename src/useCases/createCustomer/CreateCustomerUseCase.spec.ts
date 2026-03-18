@@ -1,9 +1,9 @@
 import { ICreateCustomerUseCase } from "./ICreateCustomerUseCase";
 import { CreateCustomerUseCase } from "./CreateCustomerUseCase";
-import { IEmailValidator } from "./protocols/IEmailValidator";
+import { IEmailValidator } from "../protocols/IEmailValidator";
 import { ICustomerRepository } from "../../repositories/ICustomerRepository";
 import { Customer } from "../../database/entities/Customer";
-import { IEncrypter } from "./protocols/IEncrypter";
+import { IEncrypter } from "../protocols/IEncrypter";
 
 interface ITypeSUT {
     sut: ICreateCustomerUseCase;

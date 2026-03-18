@@ -1,8 +1,8 @@
 import { Request, Response, Router } from "express";
 import { CreateCustomerController } from "../useCases/createCustomer/CreateCustomerController";
 import { CreateCustomerUseCase } from "../useCases/createCustomer/CreateCustomerUseCase";
-import { EmailValidator } from "../useCases/createCustomer/adapter/EmailValidator";
-import { Encrypter } from "../useCases/createCustomer/adapter/Encrypter";
+import { EmailValidator } from "../useCases/adapter/EmailValidator";
+import { Encrypter } from "../useCases/adapter/Encrypter";
 import { CustomerRepository } from "../repositories/CustomerRepository";
 
 const customerRoute = Router();
