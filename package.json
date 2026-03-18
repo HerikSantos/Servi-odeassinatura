@@ -4,7 +4,7 @@
     "main": "index.js",
     "scripts": {
         "build": "tsc",
-        "test": "jest",
+        "test": "jest --coverage",
         "dev": " ts-node-dev  --inspect --ignore-watch node_modules src/index.ts",
         "test:debug": "node --inspect-brk --experimental-vm-modules node_modules/.bin/jest --runInBand --watchAll",
         "test:debug:dev": "node --inspect-brk --experimental-vm-modules node_modules/.bin/jest --runInBand --watch --onlyChanged",
@@ -34,9 +34,11 @@
         "typescript-eslint": "^8.23.0"
     },
     "dependencies": {
+        "@types/jsonwebtoken": "^9.0.10",
         "bcryptjs": "^3.0.3",
         "dotenv": "^17.3.1",
         "express": "^5.2.1",
+        "jsonwebtoken": "^9.0.3",
         "mysql2": "^3.19.1",
         "reflect-metadata": "^0.2.2",
         "typeorm": "^0.3.28",

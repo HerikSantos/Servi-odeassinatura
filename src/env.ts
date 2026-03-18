@@ -4,6 +4,7 @@ import * as z from "zod";
 
 const envSchema = z.object({
     PORT: z.coerce.number().default(3333),
+    SECRET: z.string(),
 
     DB_HOST: z.string(),
     DB_PORT: z.string(),
