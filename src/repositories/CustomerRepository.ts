@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 import { ICustomerRepository } from "./ICustomerRepository";
-import { Customer } from "../database/entities/Customer";
+import { CreateCustomer, Customer } from "../database/entities/Customer";
 import { AppDataSource } from "../database";
 
 class CustomerRepository implements ICustomerRepository {
@@ -10,7 +10,7 @@ class CustomerRepository implements ICustomerRepository {
         this.repository = AppDataSource.getRepository(Customer);
     }
 
-    async add(customer: Customer): Promise<void> {
+    async add(customer: CreateCustomer): Promise<void> {
         const createdCustomer = this.repository.create(customer);
 
         await this.repository.save(createdCustomer);

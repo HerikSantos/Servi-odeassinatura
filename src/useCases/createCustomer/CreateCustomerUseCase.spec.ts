@@ -2,7 +2,7 @@ import { ICreateCustomerUseCase } from "./ICreateCustomerUseCase";
 import { CreateCustomerUseCase } from "./CreateCustomerUseCase";
 import { IEmailValidator } from "../protocols/IEmailValidator";
 import { ICustomerRepository } from "../../repositories/ICustomerRepository";
-import { Customer } from "../../database/entities/Customer";
+import { CreateCustomer, Customer } from "../../database/entities/Customer";
 import { IEncrypter } from "../protocols/IEncrypter";
 
 interface ITypeSUT {
@@ -17,6 +17,7 @@ function makeEncrypterStub(): IEncrypter {
         async hash(password: string): Promise<string> {
             return "hashedPassword";
         }
+        compare: (password: string, hashedPassword: string) => Promise<boolean>;
     }
 
     return new EncrypterStub();
@@ -45,8 +46,9 @@ function makeCustomerRepositoryStub(): ICustomerRepository {
             }
             return customer;
         }
-        async add(customer: Customer): Promise<void> {
-            repository.push(customer);
+        async add(customer: CreateCustomer): Promise<void> {
+            const customerWithID = { ...customer, id: 1 };
+            repository.push(customerWithID);
         }
     }
 

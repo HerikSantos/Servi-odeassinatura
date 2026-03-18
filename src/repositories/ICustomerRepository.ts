@@ -1,7 +1,7 @@
-import { Customer } from "../database/entities/Customer";
+import { CreateCustomer, Customer } from "../database/entities/Customer";
 
 interface ICustomerRepository {
-    add: (customer: Customer) => Promise<void>;
+    add: (customer: CreateCustomer) => Promise<void>;
     findByEmail: (email: string) => Promise<Customer | null>;
 }
 
