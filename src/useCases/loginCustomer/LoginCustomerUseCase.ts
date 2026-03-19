@@ -5,7 +5,7 @@ import {
 } from "../protocols/IAutheticationToken";
 import { IEmailValidator } from "../protocols/IEmailValidator";
 import { IEncrypter } from "../protocols/IEncrypter";
-import { ILoginCustomerUseCase, ReturnToken } from "./ILoginCustomerUseCase";
+import { ILoginCustomerUseCase, AcessToken } from "./ILoginCustomerUseCase";
 
 class LoginCustomerUseCase implements ILoginCustomerUseCase {
     constructor(
@@ -15,7 +15,7 @@ class LoginCustomerUseCase implements ILoginCustomerUseCase {
         private readonly encrypter: IEncrypter,
     ) {}
 
-    async execute(data: any): Promise<ReturnToken> {
+    async execute(data: any): Promise<AcessToken> {
         const { email, password } = data;
 
         if (!email || !password) {
@@ -38,7 +38,10 @@ class LoginCustomerUseCase implements ILoginCustomerUseCase {
 
         const { password: hashedPassword, id, name } = customer;
 
-        const compareResult = this.encrypter.compare(password, hashedPassword);
+        const compareResult = await this.encrypter.compare(
+            password,
+            hashedPassword,
+        );
 
         if (!compareResult) {
             throw new Error("Email or password is incorrect.");

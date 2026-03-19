@@ -1,8 +1,8 @@
 interface ILoginCustomerUseCase {
-    execute: (data: any) => Promise<ReturnToken>;
+    execute: (data: any) => Promise<AcessToken>;
 }
 
-type ReturnToken = {
+type AcessToken = {
     token: string;
     user: {
         id: number;
@@ -11,4 +11,4 @@ type ReturnToken = {
     };
 };
 
-export { ILoginCustomerUseCase, ReturnToken };
+export { ILoginCustomerUseCase, AcessToken };
